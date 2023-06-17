@@ -1,0 +1,93 @@
+$main-bg-color: #638bb4;
+$secondary-bg-color: #80b3e8;
+$third-bg-clr: #446080;
+$hidden: none;
+@mixin blockHeading {
+  background-color: $third-bg-clr;
+  margin: 0;
+  padding: 0.6rem 0.3rem;
+}
+@mixin border {
+  border: 1px solid #040404;
+  &:hover {
+    border: 1px solid #acacac;
+  }
+}
+
+body {
+  background-color: $main-bg-color;
+}
+
+#app {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 4rem;
+
+  #editor-container {
+    margin-top: 5rem;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    #editor-header {
+      @include blockHeading();
+      color: #fff;
+      width: 100%;
+      
+      .expand-btn {
+        float: right;
+        margin-right: 10px;
+      }
+    }
+    #editor {
+      width: 100%;
+      height: 20rem;
+      background-color: $secondary-bg-color;
+      resize: vertical;
+      transition: height 130ms ease-in;
+    }
+  }
+  #preview-container {
+    margin: 2rem 0;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 25rem;
+
+    #preview-header {
+      @include blockHeading();
+      color: #fff;
+      width: 100%;
+      
+    }
+    
+    #preview {
+      @include border();
+      width: 97%;
+      background-color: $secondary-bg-color;
+      min-height: 50rem;
+      padding: 15px;
+      transition: height 130ms ease-in;
+      &:hover {
+        cursor: default;
+      }
+      img {
+        max-width: 80%;
+      }
+    }
+  }
+}
+.expand-btn {
+  float: right;
+  margin-right: 5px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  &:hover {
+    cursor: pointer;
+  }
+}
